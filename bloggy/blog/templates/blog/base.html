@@ -1,74 +1,91 @@
+ {% load static %}
 <!DOCTYPE html>
-{% load static %}
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Blog</title>
     <!-- Bootstrap -->
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-   <!-- Medium Style Editor -->
-   <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
-   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+    <!-- Medium Style Editor -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
     <!-- Custom Css -->
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!-- Fonts     -->
-      <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
-      <!-- #techfont -->
-  </head>
-  <body class='loader'>
-<!-- navbar -->
-  <nav class="navbar navbar-default techfont custom-navbar">
-    <div class="container">
-      <ul class='nav navbar-nav'>
-        <li> <a class="navbar-brand bigbrand" href="{% url 'post_list' %}">My Blog</a> </li>
-        <li> <a href="{% url 'about' %}">About</a> </li>
-        <li> <a href="https://github.com/SRV1030">My GitHub</a>  </li>
-        <li> <a href="https://www.linkedin.com/in/sourabh-shah-1b6225192">My linkedin</a> </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {% if user.is_authenticated %}
-        <li>
-          <a href="{% url 'post_new' %}" >New Post</a>
-        </li>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
+    <!-- #techfont -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
 
-        <li>
-          <a href="{% url 'post_draft_list' %}">Drafts</a>
-        </li>
-        <li>
-          <a href="{% url 'logout' %}" >Log out</a>
-        </li>
 
-        <li>
-          <a >Welcome: {{ user.username }}</a>
-        </li>
-          {% else %}
-          <li><a class='nav navbar-right' href="{% url 'login' %}" ><span class="glyphicon glyphicon-user"></span></a></li>
-        {% endif %}
+<body class='loader'>
+    <!-- navbar -->
+    <nav class=" techfont">
+        <div class="hamburger1">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <ul class='nav-links1'>
+            <li> <a href="{% url 'post_list' %}">My Blog</a> </li>
+            <!-- <li> <a href="{% url 'about' %}">About</a> </li> -->
 
-      </ul>
-    </div>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'post_new' %}">New Post</a>
+            </li>
 
-  </nav>
-  <div class="content container">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="blog_posts">
-          {% block content %}
-          {% endblock %}
+            <li>
+                <a href="{% url 'post_draft_list' %}">Drafts</a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">Log out</a>
+            </li>
+
+            <li>
+                <a>Welcome: {{ user.username }}</a>
+            </li>
+            {% else %}
+            <li><a href="{% url 'login' %}">LogIn</span></a></li>
+            {% endif %}
+
+        </ul>
+
+    </nav>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog_posts">
+                    {% block content %} {% endblock %}
+
+                </div>
+
+            </div>
 
         </div>
 
-      </div>
-
     </div>
+</body>
+<script>
+    const hamburger = document.querySelector(".hamburger1");
+    const navLinks = document.querySelector(".nav-links1");
+    const links = document.querySelectorAll(".nav-links1 li");
 
-  </div>
-  </body>
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+        links.forEach(link => {
+            link.classList.toggle("fade");
+        });
+    });
+</script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 </html>

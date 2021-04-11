@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import re_path,path,include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.contrib.auth import views
 
 urlpatterns = [
@@ -24,4 +27,4 @@ urlpatterns = [
     re_path(r'^accounts/login/$', views.LoginView.as_view(), name='login'),
     re_path(r'^accounts/logout/$', views.LogoutView.as_view(), name='logout', kwargs={'next_page': '/'}),
     #view.login and logout are from django.contrin.auth that manage login of superuser
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

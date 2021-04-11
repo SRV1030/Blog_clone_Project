@@ -1,0 +1,184 @@
+/* navbar */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    font-family: sans-serif;
+    background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+}
+
+nav {
+    height: 10vh;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-links1 {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    position: fixed;
+    background: #5b78c7;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    clip-path: circle(50px at 93% +5%);
+    -webkit-clip-path: circle(50px at 93% +5%);
+    transition: all 1s ease-out;
+    pointer-events: none;
+}
+
+.nav-links1 li a {
+    color: white;
+    text-decoration: none;
+    font-size: clamp(1.5rem, 10vw, 5rem);
+}
+
+.nav-links1 li a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-image: linear-gradient(to top, #cfd9df 0%, #ecf2f5 100%);
+    transition: width 0.5s;
+}
+
+.nav-links1 li a:hover::after {
+    width: 100%;
+    transition: width 0.5s;
+}
+
+.line {
+    width: 30px;
+    height: 3px;
+    background: white;
+    margin: 5px;
+}
+
+.hamburger1 {
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+    z-index: 2;
+}
+
+.nav-links1.open {
+    clip-path: circle(200% at 90% -10%);
+    -webkit-clip-path: circle(200% at 90% -10%);
+    pointer-events: all;
+}
+
+.nav-links1 li {
+    opacity: 0;
+}
+
+.nav-links1 li:nth-child(1) {
+    transition: all 0.5s ease 0.2s;
+}
+
+.nav-links1 li:nth-child(2) {
+    transition: all 0.5s ease 0.4s;
+}
+
+.nav-links1 li:nth-child(3) {
+    transition: all 0.5s ease 0.6s;
+}
+
+li.fade {
+    opacity: 1;
+}
+
+
+/* navbar */
+
+.techfont {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.postdate {
+    text-align: center;
+}
+
+.posttitle {
+    font-family: 'Russo One', sans-serif;
+    font-size: 3em;
+    text-align: center;
+}
+
+.postcontent {
+    font-family: 'Montserrat';
+    font-size: 1.5em;
+    color: white;
+}
+
+.centerstage {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-comment {
+    position: absolute;
+    right: 0px;
+}
+
+.lots {
+    height: 100vh;
+    width: 90vh;
+    position: absolute;
+    right: -110%;
+    top: 50%;
+    transform: translate(-110%, -50%);
+}
+
+
+/*COLOR CHANGER*/
+
+
+/*Credit and Source: http://codepen.io/thapliyalshivam/pen/dvgXVO*/
+
+.loader {
+    filter: hue-rotate(0deg);
+    color: linear-gradient(45deg, #0f8, #08f);
+    animation: hue 5000ms infinite linear;
+}
+
+@keyframes spinify {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    33% {
+        transform: translate(0px, 24px);
+        border-radius: 100%;
+        width: 10px;
+        height: 10px;
+    }
+    66% {
+        transform: translate(0px, -16px);
+    }
+    88% {
+        transform: translate(0px, 4px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes hue {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}

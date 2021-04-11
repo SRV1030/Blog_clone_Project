@@ -1,13 +1,14 @@
-{% extends "blog/base.html" %}
-{% block content %}
+{% extends "blog/base.html" %} {% block content %}
+<!-- <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_JhSJFE.json" background="transparent" speed="1.5" class="lots" loop autoplay></lottie-player> -->
+
 <div class="centerstage">
     {% for post in post_list %}
-    <div class="list">
-      <h1> <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> </h1>
-      <div class="date">
-        <p>Published on: {{post.published|date:"D M Y"}}</p>
-      </div>
-       <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }} </a>
+    <div>
+        <h1> <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> </h1>
+        <div class="date">
+            <p>Published on: {{post.published|date:"D M Y"}}</p>
+        </div>
+        <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }} </a>
     </div>
 
     {% endfor %}
